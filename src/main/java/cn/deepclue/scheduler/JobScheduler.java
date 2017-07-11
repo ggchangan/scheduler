@@ -1,5 +1,7 @@
 package cn.deepclue.scheduler;
 
+import java.util.List;
+
 /**
  * Created by xuzb on 19/03/2017.
  */
@@ -49,4 +51,22 @@ public interface JobScheduler {
      * @return
      */
     boolean resumeAll();
+
+    /**
+     * get all jobs in scheduler
+     * @param page
+     * @param pageSize
+     * @return
+     */
+    List<Job> getJobs(int page, int pageSize);
+
+
+    /**
+     * get all jobs with special status
+     * @param status see QJobStatus
+     * @param page
+     * @param pageSize
+     * @return
+     */
+    List<Job> getJobs(QJobStatus status, int page, int pageSize);
 }

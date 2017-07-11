@@ -52,5 +52,21 @@ public interface JobService {
      */
     boolean resumeAll();
 
+    /**
+     * get all jobs in scheduler
+     * @param page
+     * @param pageSize
+     * @return
+     */
     List<Job> getJobs(int page, int pageSize);
+
+
+    /**
+     * get all jobs with special status
+     * @param status see QJobStatus
+     * @param page
+     * @param pageSize
+     * @return
+     */
+    List<Job> getJobs(QJobStatus status, int page, int pageSize);
 }
