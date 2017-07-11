@@ -1,0 +1,13 @@
+.gradle
+.idea
+build
+*.iml
+log
+.DS_Store
+classes
+conf/application.yml
+./bin/log/*
+./bin/sys/log/*
+genlibs
+*.ipr
+*.iws
