@@ -3,6 +3,8 @@ package cn.deepclue.scheduler.impl.queue;
 import cn.deepclue.scheduler.Job;
 import cn.deepclue.scheduler.JobScheduler;
 import cn.deepclue.scheduler.QJobStatus;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -14,6 +16,8 @@ import java.util.stream.Collectors;
  * Created by ggchangan on 17-7-11.
  */
 public class QueueJobScheduler implements JobScheduler {
+    private static Logger logger = LoggerFactory.getLogger(QueueJobScheduler.class);
+
     private Queue<Job> jobQueue;
     private volatile boolean shutdown = false;
     private List<Job> scheduledJobs = new LinkedList<>();
@@ -77,6 +81,8 @@ public class QueueJobScheduler implements JobScheduler {
         switch (status) {
             case RUNNING:
                 return jobQueue.stream().collect(Collectors.toList());
+            case FINISHED:
+                return scheduledJobs;
         }
 
         return scheduledJobs;
@@ -91,6 +97,14 @@ public class QueueJobScheduler implements JobScheduler {
                 if (job != null) {
                     scheduledJobs.add(job);
                 }
+
+                try {
+                    //暂停1s后开始调度
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    logger.error(e.getMessage(), e);
+                }
+
             }
         }
     }

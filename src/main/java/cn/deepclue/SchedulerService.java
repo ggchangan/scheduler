@@ -1,4 +1,5 @@
-import cn.deepclue.scheduler.JobService;
+package cn.deepclue.scheduler;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

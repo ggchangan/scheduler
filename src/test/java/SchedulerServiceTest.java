@@ -1,6 +1,5 @@
+import cn.deepclue.scheduler.SchedulerService;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by ggchangan on 17-7-11.
@@ -8,7 +7,7 @@ import static org.junit.Assert.*;
 public class SchedulerServiceTest {
     @Test
     public void start() throws Exception {
-
+        SchedulerService service = new SchedulerService();
     }
 
 }
