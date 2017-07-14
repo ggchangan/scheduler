@@ -2,31 +2,30 @@ package cn.deepclue.scheduler.service.impl.quartz;
 
 
 import cn.deepclue.scheduler.domain.Job;
+import cn.deepclue.scheduler.domain.QJobStatus;
 import cn.deepclue.scheduler.service.JobScheduler;
 import cn.deepclue.scheduler.service.JobService;
-import cn.deepclue.scheduler.domain.QJobStatus;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by xuzb on 19/03/2017.
  */
-public class QuartzJobService implements JobService {
+@Service("jobService")
+public class QuartzJobServiceImpl implements JobService {
+    @Autowired
     private JobScheduler jobScheduler;
-
-    public void setJobScheduler(JobScheduler jobScheduler) {
-        this.jobScheduler = jobScheduler;
-        jobScheduler.start();
-    }
 
     @Override
     public boolean start() {
-        return false;
+        return jobScheduler.start();
     }
 
-    @Override public boolean shutdown() {
-        return false;
+    @Override
+    public boolean shutdown() {
+        return jobScheduler.shutdown();
     }
 
     @Override
@@ -39,23 +38,24 @@ public class QuartzJobService implements JobService {
         return jobScheduler.unschedule(job);
     }
 
-    @Override public boolean clear() {
+    @Override
+    public boolean clear() {
         return jobScheduler.clear();
     }
 
     @Override
     public boolean resume(Job job) {
-        return false;
+        return jobScheduler.resume(job);
     }
 
     @Override
     public boolean resumeAll() {
-        return false;
+        return jobScheduler.resumeAll();
     }
 
     @Override
     public List<Job> getJobs(int page, int pageSize) {
-        return new ArrayList<>();
+        return null;
     }
 
     @Override

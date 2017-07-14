@@ -63,7 +63,6 @@ public interface JobScheduler {
      */
     List<Job> getJobs(int page, int pageSize);
 
-
     /**
      * get all jobs with special status
      * @param status see QJobStatus

@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SchedulerApplication {
+public class SchedulerService {
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(SchedulerApplication.class, args);
+        SpringApplication.run(SchedulerService.class, args);
     }
 }

@@ -1,15 +1,16 @@
 package cn.deepclue.scheduler.service.impl.quartz;
 
 import cn.deepclue.scheduler.domain.Job;
-import cn.deepclue.scheduler.service.JobListener;
-import cn.deepclue.scheduler.service.JobScheduler;
 import cn.deepclue.scheduler.domain.QJobStatus;
 import cn.deepclue.scheduler.exception.QuartzException;
+import cn.deepclue.scheduler.service.JobListener;
+import cn.deepclue.scheduler.service.JobScheduler;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 import org.quartz.impl.matchers.GroupMatcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -18,8 +19,10 @@ import static org.quartz.impl.matchers.EverythingMatcher.allJobs;
 /**
  * Created by xuzb on 19/03/2017.
  */
-public class QuartzJobScheduler implements JobScheduler {
-    private static Logger logger = LoggerFactory.getLogger(QuartzJobScheduler.class);
+@Service("jobScheduler")
+public class QuartzJobSchedulerImpl implements JobScheduler {
+    private static Logger logger = LoggerFactory.getLogger(QuartzJobSchedulerImpl.class);
+
     private Scheduler scheduler;
     private JobListener jobListener;
     private QJobBuilder qJobBuilder;
@@ -115,7 +118,6 @@ public class QuartzJobScheduler implements JobScheduler {
         }
     }
 
-
     @Override
     public boolean shutdown() {
         if (scheduler == null) {
@@ -162,7 +164,7 @@ public class QuartzJobScheduler implements JobScheduler {
         return deleteJob(jobKey);
     }
 
-    public boolean deleteJob(JobKey jobKey) {
+    private boolean deleteJob(JobKey jobKey) {
         boolean deleteStatus;
         try {
             deleteStatus = scheduler.deleteJob(jobKey);
@@ -232,7 +234,5 @@ public class QuartzJobScheduler implements JobScheduler {
 
         return true;
     }
-
-
 }
 

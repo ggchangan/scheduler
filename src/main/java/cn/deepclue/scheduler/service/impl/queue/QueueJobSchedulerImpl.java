@@ -1,8 +1,8 @@
 package cn.deepclue.scheduler.service.impl.queue;
 
 import cn.deepclue.scheduler.domain.Job;
-import cn.deepclue.scheduler.service.JobScheduler;
 import cn.deepclue.scheduler.domain.QJobStatus;
+import cn.deepclue.scheduler.service.JobScheduler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,21 +15,21 @@ import java.util.stream.Collectors;
 /**
  * Created by ggchangan on 17-7-11.
  */
-public class QueueJobScheduler implements JobScheduler {
-    private static Logger logger = LoggerFactory.getLogger(QueueJobScheduler.class);
+public class QueueJobSchedulerImpl implements JobScheduler {
+    private static Logger logger = LoggerFactory.getLogger(QueueJobSchedulerImpl.class);
 
     private Queue<Job> jobQueue;
     private volatile boolean shutdown = false;
     private List<Job> scheduledJobs = new LinkedList<>();
 
-    public QueueJobScheduler(Queue<Job> jobQueue) {
+    public QueueJobSchedulerImpl(Queue<Job> jobQueue) {
         this.jobQueue = jobQueue;
     }
 
     @Override
     public boolean start() {
         if (jobQueue == null) {
-            jobQueue = new ArrayBlockingQueue<>(QueueJobService.MAX_JOB_COUNT);
+            jobQueue = new ArrayBlockingQueue<>(QueueJobServiceImpl.MAX_JOB_COUNT);
         }
         Thread schedulerWorker = new Thread(new SchedulerWorker());
         schedulerWorker.start();

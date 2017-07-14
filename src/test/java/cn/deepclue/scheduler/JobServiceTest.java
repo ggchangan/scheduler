@@ -1,6 +1,6 @@
 package cn.deepclue.scheduler;
 
-import cn.deepclue.scheduler.service.SchedulerService;
+import cn.deepclue.scheduler.service.JobService;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SchedulerServiceTest {
+public class JobServiceTest {
     @Autowired
-    private SchedulerService service;
+    private JobService jobService;
 }

@@ -5,6 +5,8 @@ package cn.deepclue.scheduler.domain;
  */
 public class Job {
     private int jId;
+    private int appId;
+    private Callback callback;
 
     public Job() {
     }
@@ -21,7 +23,23 @@ public class Job {
         this.jId = jId;
     }
 
+    public int getAppId() {
+        return appId;
+    }
+
+    public void setAppId(int appId) {
+        this.appId = appId;
+    }
+
     public String getGroupName() {
         return "DEFAULT";
+    }
+
+    public Callback getCallback() {
+        return callback;
+    }
+
+    public void setCallback(Callback callback) {
+        this.callback = callback;
     }
 }

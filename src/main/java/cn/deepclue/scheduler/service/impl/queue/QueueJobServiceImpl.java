@@ -1,9 +1,9 @@
 package cn.deepclue.scheduler.service.impl.queue;
 
 import cn.deepclue.scheduler.domain.Job;
+import cn.deepclue.scheduler.domain.QJobStatus;
 import cn.deepclue.scheduler.service.JobScheduler;
 import cn.deepclue.scheduler.service.JobService;
-import cn.deepclue.scheduler.domain.QJobStatus;
 
 import java.util.List;
 import java.util.Queue;
@@ -12,15 +12,15 @@ import java.util.concurrent.ArrayBlockingQueue;
 /**
  * Created by ggchangan on 17-7-11.
  */
-public class QueueJobService implements JobService {
+public class QueueJobServiceImpl implements JobService {
     public static final int MAX_JOB_COUNT = 5;
 
     private Queue<Job> jobQueue = new ArrayBlockingQueue<>(MAX_JOB_COUNT);
 
     private JobScheduler jobScheduler;
 
-    public QueueJobService() {
-        jobScheduler = new QueueJobScheduler(jobQueue);
+    public QueueJobServiceImpl() {
+        jobScheduler = new QueueJobSchedulerImpl(jobQueue);
     }
 
     @Override
