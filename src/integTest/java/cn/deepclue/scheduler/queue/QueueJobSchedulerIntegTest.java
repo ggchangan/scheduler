@@ -1,10 +1,10 @@
 package cn.deepclue.scheduler.queue;
 
-import cn.deepclue.scheduler.Job;
-import cn.deepclue.scheduler.JobService;
-import cn.deepclue.scheduler.QJobStatus;
-import cn.deepclue.scheduler.SchedulerService;
-import cn.deepclue.scheduler.impl.queue.QueueJobService;
+import cn.deepclue.scheduler.domain.Job;
+import cn.deepclue.scheduler.service.JobService;
+import cn.deepclue.scheduler.domain.QJobStatus;
+import cn.deepclue.scheduler.service.SchedulerService;
+import cn.deepclue.scheduler.service.impl.queue.QueueJobService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

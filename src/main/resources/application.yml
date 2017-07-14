@@ -1,0 +1,31 @@
+spring:
+  profiles:
+    # active env
+    active: dev
+  aop:
+    auto: true
+    proxy-target-class: true
+  jackson:
+    default-property-inclusion: non_null
+logging:
+    path: /data/scheduler/log
+    level:
+         root: info
+    config: classpath:logback-spring.xml
+server:
+  context-path: /scheduler
+  port: 7777
+  tomcat:
+    uri-encoding: utf-8
+
+---
+spring:
+  profiles: dev
+
+---
+spring:
+  profiles: beta
+
+---
+spring:
+  profiles: prod

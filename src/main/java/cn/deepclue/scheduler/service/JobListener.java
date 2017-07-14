@@ -1,4 +1,6 @@
-package cn.deepclue.scheduler;
+package cn.deepclue.scheduler.service;
+
+import cn.deepclue.scheduler.domain.QJobStatus;
 
 /**
  * Created by magneto on 17-3-27.

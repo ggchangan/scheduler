@@ -1,7 +1,7 @@
-package cn.deepclue.scheduler.impl.quartz;
+package cn.deepclue.scheduler.service.impl.quartz;
 
-import cn.deepclue.scheduler.JobListener;
-import cn.deepclue.scheduler.QJobStatus;
+import cn.deepclue.scheduler.service.JobListener;
+import cn.deepclue.scheduler.domain.QJobStatus;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.quartz.listeners.JobListenerSupport;

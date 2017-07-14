@@ -1,9 +1,9 @@
-package cn.deepclue.scheduler.impl.quartz;
+package cn.deepclue.scheduler.service.impl.quartz;
 
-import cn.deepclue.scheduler.Job;
-import cn.deepclue.scheduler.JobListener;
-import cn.deepclue.scheduler.JobScheduler;
-import cn.deepclue.scheduler.QJobStatus;
+import cn.deepclue.scheduler.domain.Job;
+import cn.deepclue.scheduler.service.JobListener;
+import cn.deepclue.scheduler.service.JobScheduler;
+import cn.deepclue.scheduler.domain.QJobStatus;
 import cn.deepclue.scheduler.exception.QuartzException;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;

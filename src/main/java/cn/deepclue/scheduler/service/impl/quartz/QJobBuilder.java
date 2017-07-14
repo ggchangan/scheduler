@@ -1,6 +1,6 @@
-package cn.deepclue.scheduler.impl.quartz;
+package cn.deepclue.scheduler.service.impl.quartz;
 
-import cn.deepclue.scheduler.Job;
+import cn.deepclue.scheduler.domain.Job;
 import org.quartz.JobDetail;
 import org.quartz.Trigger;
 

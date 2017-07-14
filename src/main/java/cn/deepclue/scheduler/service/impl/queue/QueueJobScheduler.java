@@ -1,8 +1,8 @@
-package cn.deepclue.scheduler.impl.queue;
+package cn.deepclue.scheduler.service.impl.queue;
 
-import cn.deepclue.scheduler.Job;
-import cn.deepclue.scheduler.JobScheduler;
-import cn.deepclue.scheduler.QJobStatus;
+import cn.deepclue.scheduler.domain.Job;
+import cn.deepclue.scheduler.service.JobScheduler;
+import cn.deepclue.scheduler.domain.QJobStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

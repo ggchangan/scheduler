@@ -1,4 +1,4 @@
-package cn.deepclue.scheduler;
+package cn.deepclue.scheduler.domain;
 
 /**
  * Created by magneto on 17-3-27.

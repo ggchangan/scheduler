@@ -1,10 +1,10 @@
-package cn.deepclue.scheduler.impl.quartz;
+package cn.deepclue.scheduler.service.impl.quartz;
 
 
-import cn.deepclue.scheduler.Job;
-import cn.deepclue.scheduler.JobScheduler;
-import cn.deepclue.scheduler.JobService;
-import cn.deepclue.scheduler.QJobStatus;
+import cn.deepclue.scheduler.domain.Job;
+import cn.deepclue.scheduler.service.JobScheduler;
+import cn.deepclue.scheduler.service.JobService;
+import cn.deepclue.scheduler.domain.QJobStatus;
 
 import java.util.ArrayList;
 import java.util.List;

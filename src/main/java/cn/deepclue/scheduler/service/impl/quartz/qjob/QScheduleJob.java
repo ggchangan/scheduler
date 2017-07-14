@@ -1,8 +1,8 @@
-package cn.deepclue.scheduler.impl.quartz.qjob;
+package cn.deepclue.scheduler.service.impl.quartz.qjob;
 
-import cn.deepclue.scheduler.Job;
+import cn.deepclue.scheduler.domain.Job;
 import cn.deepclue.scheduler.exception.SchedulerException;
-import cn.deepclue.scheduler.impl.quartz.QStreamJobBuilder;
+import cn.deepclue.scheduler.service.impl.quartz.QStreamJobBuilder;
 import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;

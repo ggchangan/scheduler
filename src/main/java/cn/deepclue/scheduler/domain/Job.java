@@ -1,4 +1,4 @@
-package cn.deepclue.scheduler;
+package cn.deepclue.scheduler.domain;
 
 /**
  * Created by xuzb on 17/03/2017.

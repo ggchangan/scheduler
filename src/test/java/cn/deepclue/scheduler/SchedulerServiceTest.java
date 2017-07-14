@@ -1,4 +1,6 @@
-import cn.deepclue.scheduler.SchedulerService;
+package cn.deepclue.scheduler;
+
+import cn.deepclue.scheduler.service.SchedulerService;
 import org.junit.Test;
 
 /**

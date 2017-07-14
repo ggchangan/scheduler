@@ -1,4 +1,7 @@
-package cn.deepclue.scheduler;
+package cn.deepclue.scheduler.service;
+
+import cn.deepclue.scheduler.domain.Job;
+import cn.deepclue.scheduler.domain.QJobStatus;
 
 import java.util.List;
 
