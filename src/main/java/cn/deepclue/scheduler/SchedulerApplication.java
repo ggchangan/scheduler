@@ -8,5 +8,4 @@ public class SchedulerApplication {
     public static void main(String[] args) throws Exception {
         SpringApplication.run(SchedulerApplication.class, args);
     }
-
 }
