@@ -55,11 +55,11 @@ public class QuartzJobServiceImpl implements JobService {
 
     @Override
     public List<Job> getJobs(int page, int pageSize) {
-        return null;
+        return jobScheduler.getJobs(page, pageSize);
     }
 
     @Override
     public List<Job> getJobs(QJobStatus status, int page, int pageSize) {
-        return null;
+        return jobScheduler.getJobs(status, page, pageSize);
     }
 }
