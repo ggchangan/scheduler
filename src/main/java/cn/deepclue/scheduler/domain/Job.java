@@ -2,6 +2,10 @@ package cn.deepclue.scheduler.domain;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.web.client.RestTemplate;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -55,6 +59,16 @@ public class Job {
     }
 
     public boolean run() {
+        RestTemplate restTemplate = new RestTemplate();
+
+        HttpHeaders headers = new HttpHeaders();
+        MediaType type = MediaType.parseMediaType("application/json; charset=UTF-8");
+        headers.setContentType(type);
+        headers.add("Accept", MediaType.APPLICATION_JSON.toString());
+
+        HttpEntity<String> formEntity = new HttpEntity<>(callback.getRequestBody(), headers);
+
+        restTemplate.postForObject(callback.getUrl(), formEntity, Boolean.class);
         return true;
     }
 

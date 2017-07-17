@@ -1,5 +1,8 @@
 package cn.deepclue.scheduler.domain;
 
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+
 public class Callback {
     private String url;
     private String requestBody;
@@ -18,5 +21,11 @@ public class Callback {
 
     public void setRequestBody(String requestBody) {
         this.requestBody = requestBody;
+    }
+
+    public MultiValueMap getRequest() {
+        MultiValueMap<String, String> hashMap = new LinkedMultiValueMap();
+
+        return null;
     }
 }
