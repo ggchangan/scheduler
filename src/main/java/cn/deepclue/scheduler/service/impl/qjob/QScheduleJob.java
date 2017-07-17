@@ -1,8 +1,8 @@
-package cn.deepclue.scheduler.service.impl.quartz.qjob;
+package cn.deepclue.scheduler.service.impl.qjob;
 
 import cn.deepclue.scheduler.domain.Job;
 import cn.deepclue.scheduler.exception.SchedulerException;
-import cn.deepclue.scheduler.service.impl.quartz.QStreamJobBuilder;
+import cn.deepclue.scheduler.service.impl.builder.QStreamJobBuilderImpl;
 import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -19,7 +19,7 @@ public class QScheduleJob implements QJob {
 
         JobDataMap jobDataMap = context.getJobDetail().getJobDataMap();
 
-        String jobClassName = jobDataMap.getString(QStreamJobBuilder.JOB_CLASS_KEY);
+        String jobClassName = jobDataMap.getString(QStreamJobBuilderImpl.JOB_CLASS_KEY);
 
         Job job;
         try {
@@ -33,7 +33,7 @@ public class QScheduleJob implements QJob {
         int jId = Integer.valueOf(context.getJobDetail().getKey().getName());
         job.setjId(jId);
 
-        String jobData = jobDataMap.getString(QStreamJobBuilder.JOB_DATA_KEY);
+        String jobData = jobDataMap.getString(QStreamJobBuilderImpl.JOB_DATA_KEY);
         job.deserialize(jobData);
 
         try {

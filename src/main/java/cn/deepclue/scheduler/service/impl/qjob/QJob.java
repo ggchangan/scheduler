@@ -1,4 +1,4 @@
-package cn.deepclue.scheduler.service.impl.quartz.qjob;
+package cn.deepclue.scheduler.service.impl.qjob;
 
 import org.quartz.Job;
 

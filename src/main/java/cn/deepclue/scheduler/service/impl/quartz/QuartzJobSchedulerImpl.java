@@ -5,50 +5,33 @@ import cn.deepclue.scheduler.domain.QJobStatus;
 import cn.deepclue.scheduler.exception.QuartzException;
 import cn.deepclue.scheduler.service.JobListener;
 import cn.deepclue.scheduler.service.JobScheduler;
+import cn.deepclue.scheduler.service.QJobBuilder;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 import org.quartz.impl.matchers.GroupMatcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 import static org.quartz.impl.matchers.EverythingMatcher.allJobs;
 
-/**
- * Created by xuzb on 19/03/2017.
- */
 @Service("jobScheduler")
 public class QuartzJobSchedulerImpl implements JobScheduler {
     private static Logger logger = LoggerFactory.getLogger(QuartzJobSchedulerImpl.class);
 
     private Scheduler scheduler;
-    private JobListener jobListener;
+    @Autowired
     private QJobBuilder qJobBuilder;
-
-    public void setScheduler(Scheduler scheduler) {
-        this.scheduler = scheduler;
-    }
-
-    public void setqJobBuilder(QJobBuilder qJobBuilder) {
-        this.qJobBuilder = qJobBuilder;
-    }
-
-    public QJobBuilder getqJobBuilder() {
-        return qJobBuilder;
-    }
-
-    public Scheduler getScheduler() {
-        return scheduler;
-    }
+    @Autowired
+    private JobListener jobListener;
+    @Autowired
+    private org.quartz.JobListener qJobListener;
 
     @Override
     public boolean schedule(Job job) {
-        if (qJobBuilder == null) {
-            throw new QuartzException("Please set job builder.", "请设置任务构建的工厂函数。");
-        }
-
         try {
 
             if (scheduler == null || !scheduler.isStarted()) {
@@ -59,9 +42,7 @@ public class QuartzJobSchedulerImpl implements JobScheduler {
             Trigger trigger = qJobBuilder.buildTrigger(job);
 
             scheduler.scheduleJob(jobDetail, trigger);
-            if (jobListener != null) {
-                jobListener.onStatusChanged(job.getjId(), QJobStatus.PENDING);
-            }
+            jobListener.onStatusChanged(job.getjId(), QJobStatus.PENDING);
 
             return true;
         } catch (SchedulerException e) {
@@ -92,10 +73,6 @@ public class QuartzJobSchedulerImpl implements JobScheduler {
         return true;
     }
 
-    public void addListener(JobListener jobListener) {
-        this.jobListener = jobListener;
-    }
-
     @Override
     public boolean start() {
         try {
@@ -106,11 +83,7 @@ public class QuartzJobSchedulerImpl implements JobScheduler {
             if (!scheduler.isStarted()) {
                 scheduler.start();
             }
-
-            if (jobListener != null) {
-                QJobListener qJobListener = new QJobListener(jobListener);
-                scheduler.getListenerManager().addJobListener(qJobListener, allJobs());
-            }
+            scheduler.getListenerManager().addJobListener(qJobListener, allJobs());
 
             return true;
         } catch (SchedulerException e) {
@@ -168,7 +141,7 @@ public class QuartzJobSchedulerImpl implements JobScheduler {
         boolean deleteStatus;
         try {
             deleteStatus = scheduler.deleteJob(jobKey);
-            if (deleteStatus && jobListener != null) {
+            if (deleteStatus) {
                 Integer jobId = Integer.valueOf(jobKey.getName());
                 jobListener.onStatusChanged(jobId, QJobStatus.CANCLE);
             }
