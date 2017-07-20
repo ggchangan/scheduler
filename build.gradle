@@ -38,7 +38,7 @@ task wrapper(type: Wrapper) {
 
 // In this section you declare where to find the dependencies of your project
 repositories {
-    maven { url 'http://$mavenIp:8081/nexus/content/groups/public' }
+    maven { url "http://$mavenIp:8081/nexus/content/groups/public" }
     // Use 'jcenter' for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
